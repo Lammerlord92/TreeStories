@@ -1,3 +1,3 @@
-== Magic Stories
+== Tree Stories
 
-Magic Stories es el nombre provisional de una aplicación web para crear, ver y compartir con amigos historias interactivas. Esta aplicación será desarrollada en Ruby con el framework Ruby on Rails.
+Tree Stories es el nombre provisional de una aplicación web para crear, ver y compartir con amigos historias interactivas. Esta aplicación será desarrollada en Ruby con el framework Ruby on Rails.
