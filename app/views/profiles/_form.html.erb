@@ -1,0 +1,43 @@
+<% name ||= "Editar" %>
+
+<h2><%= name %> perfil</h2>
+
+<%= form_for(@profile) do |f| %>
+    
+  <% @profile.errors.full_messages.each do |message| %>
+    <div class="error">
+      *<%= message %>
+    </div>
+  <% end %>
+    
+  <div class="field">
+    <%= f.label :name, 'Nombre' %>
+    <%= f.text_field :name, placeholder: 'Nombre', class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :avatar %>
+    <%= f.text_field :avatar, placeholder: 'Avatar', class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description, 'Descripción' %>
+    <%= f.text_area :description, placeholder: 'Descripción', class: "form-control" %>
+  </div>
+    
+  <div class="field">
+    <%= f.label :signature, 'Firma' %>
+    <%= f.text_field :signature, placeholder: 'Firma', class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :profile_status, 'Privacidad' %></br>
+    <%= f.radio_button :profile_status, 'PUBLIC' %> Público &nbsp;&nbsp;
+    <%= f.radio_button :profile_status, 'PRIVATE' %> Privado</br>
+  </div>
+    
+  <div class="field">
+    <%= f.submit 'Guardar', class: "btn btn-primary" %>
+  </div>
+
+<% end %>

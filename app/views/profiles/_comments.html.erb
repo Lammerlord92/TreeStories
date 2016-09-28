@@ -1,0 +1,44 @@
+<% name ||= "Comentarios" %>
+
+<% if @profile.profile_status == 'PUBLIC' ||  current_user.present? &&
+  # t En caso de amistades completariamos la comprobacion de abajo con: || @is_friend_profile  
+    (current_user.role_type == 'Administrator' || @is_current_profile) %>
+    <div>
+      <table>
+        <tr>
+          <td>Titulo</td>
+          <td>Comentario</td>
+          <td>Rating</td>
+          <td>Fecha</td>
+          <td>Autor</td>
+        </tr>
+
+        <% @comments.each do |comment|%>
+            <tr>
+              <td>
+                <%= comment.title %>
+              </td>
+              <td>
+                <%= comment.body %>
+              </td>
+              <td>
+                <%= comment.rating %>
+              </td>
+              <td>
+                <%= comment.date %>
+              </td>
+              <td>
+                <%= comment.author %>
+              </td>
+            </tr>
+        <% end %>
+
+
+      </table>
+    </div>
+
+    </br>
+
+    <%= link_to "Nuevo comentario", new_comment_path(:id => @profile.id), class:"btn btn-default", :method => :get %>
+
+<% end %>

@@ -1,0 +1,78 @@
+<div class="container">
+
+  <!-- Título y autor -->
+  <div class="text-center book-title">
+    <h1><%= @story.title %></h1>
+    <h3><%= @story.creatorProfile.name %></h3>
+  </div>
+
+  <!-- Libro -->
+  <div ng-app="reader" ng-controller="ReaderController" class="row row-eq-height book">
+    
+    <!-- Página izquierda -->
+    <div class="col-md-3 col-md-offset-1 page-left">
+    </div>
+
+    <!-- Página derecha -->
+    <div class="col-md-5 page-right">
+        
+      <!--Animación de loading-->
+      <h2 class="text-center" ng-show="loading">
+        <img src="/ripple.svg" alt="Loading...">
+      </h2>
+
+      <!-- Contenido de la página -->
+      <article ng-hide="loading">
+
+        <!-- Capítulo anterior -->
+        <a ng-show="parent_id" ng-click="setChapter(parent_id)" class="book-back">
+          <p><span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Atrás</p>
+        </a>
+
+        <!-- Cuerpo del capítulo -->
+        <p ng-bind-html="current_chapter? current_chapter.body : 'No hay cuerpo del capitulo/nodo'"></p>
+        <p ng-hide="options.length > 0" class="text-center"><b>FIN</b></p>
+
+        <!-- Lista de opciones -->
+        <ul id="options-list" class="list-unstyled">
+          <li ng-repeat="option in options">
+            <a ng-click="setChapter(option.child_id)" class="book-option">
+              <p><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;{{option.option}}</p>
+            </a>
+          </li>
+        </ul>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  
+  (function(){
+    angular.module("reader", ["ngSanitize"]).controller("ReaderController", function($scope, $sanitize){
+      $scope.loading = true;
+      $scope.parent_id = null;
+      $scope.options = [];
+      $scope.current_chapter = null;
+      $scope.setChapter = function setChapter(id){
+        $scope.loading = true;
+        $.get("/chapters/"+id+".json", function(chapter){
+          var first_parent = chapter.parent_options[0];
+          chapter.body = $sanitize(chapter.body);
+          console.log((chapter.body));
+          $scope.options = chapter.child_options;
+          $scope.parent_id = first_parent? first_parent.parent_id: null;
+          $scope.current_chapter = chapter;
+          $scope.loading = false;
+          $scope.$digest();
+        })
+      };
+      $scope.setChapter(<%= @story.chapters.first.id %>);
+    });
+  })();
+
+</script>

@@ -1,0 +1,30 @@
+<% name ||= "Comentarios" %>
+<hr/>
+
+<% @comments.each do |comment|%>
+  <div class="container-fluid row">
+    <div class="col-md-2">
+      <a href="/profiles/<%= comment.profile.id %>">
+      <%= image_tag(comment.profile.avatar, class: "img-circle img-responsive") %>
+      <p class="text-center"><%= comment.profile.user.name %></p>
+      </a>
+    </div>
+    <div class="col-md-9">
+      <h4><%= comment.title %></h4>
+      <p><%= comment.body %><p>
+      <small><%= comment.date.strftime("%A, %dth %B %Y") %></small>
+    </div>
+    <div class="col-md-1">
+      <% if current_user.profile == comment.profile %>
+      <%= link_to "", edit_comment_path(comment, :id_story => id), class: "glyphicon glyphicon-pencil" %>
+      <% end %>
+    </div>
+  </div>
+  <hr/>
+<% end %>
+
+<div class="boton">
+  <% if current_user.present? %>
+    <%= link_to "Nuevo comentario", new_comment_path(:id_story => id), class: "btn btn-primary", :method => :get %>
+  <% end %>
+</div>

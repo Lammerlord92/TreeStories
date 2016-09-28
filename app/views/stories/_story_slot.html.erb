@@ -1,0 +1,12 @@
+<div class="center">
+  <a href="/stories/<%= story.id %>">
+  <div class="story">
+    <p class="title"><%= story.title %></p>
+      <%= render 'stories/story_cover', story: story %>
+    <div class="story-info">
+      <p class="author"><%= story.creatorProfile.name %></p>
+      <%= render 'stories/valoration', valoration: 8 %>
+    </div>
+  </div>
+  </a>
+</div>

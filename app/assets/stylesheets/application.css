@@ -1,0 +1,172 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require bootstrap
+ *= require bootstrap-wysihtml5
+ *= require bootstrap-datepicker
+ */
+
+ /*
+ [...]
+ *= require slick
+ [...]
+ */
+ /*
+[...]
+*= require slick-theme
+[...]
+*/
+
+/* Errores */
+
+.errors{
+  border: 1px solid darkred;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.error{
+  color: red;
+  padding: 0.5em;
+  margin: 2px;
+  background-color: #eaadc0;
+}
+
+.field_with_errors{
+  padding-bottom: 5px;
+  border-bottom: 1px solid red;
+}
+
+
+/* Estructura de la página */
+
+html{
+  height:100%;
+}
+
+body{
+  height:100%;
+  background-color: #efefef !important;
+}
+
+.header-content{
+  min-height:100%;
+  padding-bottom: 50px;
+}
+
+.footer{
+  height: 50px;
+  margin-top: -50px !important;
+}
+
+
+/* Header */
+
+header nav{
+  background-color: #002400 !important;
+  border: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+header a, header a:hover{
+  color: #FFFFFF !important;
+}
+
+.newstory, .newstory:hover{
+  color: #002400 !important;
+  background-color: #ECA701 !important;
+  border-radius: 0 !important;
+  border: 0 !important;
+  padding: 5px !important;
+  margin: 10px;
+}
+
+header img{
+  height: 42px !important;
+}
+
+.img-container{
+  padding: 4px !important;
+}
+
+.navbar-brand{
+  margin-right: 20px !important;
+}
+
+header .open .dropdown-toggle{
+  background-color: #002400 !important;
+}
+
+header .dropdown-menu{
+  background-color: #002400 !important;
+}
+
+header .dropdown-menu a:hover{
+  color: #002400 !important;
+}
+
+
+/* Banner */
+
+.banner{
+  height: 150px;
+  margin-bottom: 35px;
+  background-image: url("/assets/mosaico.jpg");
+  background-size: contain;
+}
+
+.jumbo-banner{
+  height: 100px;
+  margin-bottom: 25px !important;
+  margin-top: 25px;
+  padding: 0 !important;
+  background-color: white !important;
+}
+
+.banner h3{
+  text-align: center;
+  margin: 37px 0 37px 0 !important;
+}
+
+
+/* Footer */
+
+footer{
+  width: 100%;
+  background-color: #002400 !important;
+}
+
+footer a, footer a:hover{
+  background-color: #002400 !important;
+  color: #FFFFFF !important;
+}
+
+.navbar-footer {
+  margin: 0 !important;
+  border: 0 !important;
+}
+
+.copyright{
+  padding-top: 15px;
+  color: white;
+}
+
+
+/* Layout */
+
+/* Cambio del color de hr por defecto para
+  que se aprecie con el nuevo fondo */
+hr{
+  border-color: darkgray !important;
+}

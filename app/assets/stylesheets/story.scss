@@ -1,0 +1,267 @@
+// Place all the styles related to the story controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+a { cursor: pointer; }
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+}
+input[readonly] {
+  background-color: white !important;
+  cursor: text !important;
+}
+
+.option{
+  background-color: #ddd;
+  margin: 1em 0;
+  padding: 1em;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.glyphicon-remove-circle{
+  margin: 0.2em;
+}
+
+.center {
+  text-align: center !important;
+}
+
+.story {
+  text-align: center;
+  font-size: 95%;
+  background-color: white;
+  border: 1px solid gray;
+  box-shadow: 2px 2px 5px #888888;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.story p {
+  text-transform: uppercase;
+  text-align: left;
+  margin-top: 2px;
+  margin-left: 6px;
+  margin-right: 6px;
+  margin-bottom: 0px;
+}
+
+.story-info p {
+  font-size: 95%;
+}
+
+.story-info .valoration {
+  text-align: left;
+  margin-left: 6px;
+  margin-top: 0px;
+  margin-bottom: 2px;
+}
+
+.valoration-star {
+  height: auto;
+  max-height: 16px;
+}
+
+.cover-image {
+  height: auto;
+  width: 100%;
+  max-height: 300px;
+  max-width: 200px;
+}
+
+.categories {
+  text-align: center;
+}
+
+.search {
+  text-align: center;
+  width: 90%;
+  margin: auto auto;
+}
+
+.filter {
+  text-align: center;
+}
+
+/* Relativo a story-metadata */
+
+.story-metadata {
+  border: 1px solid #ccc;
+  background-color: white;
+}
+
+.story-metadata h2 {
+  margin-left: 3%;
+}
+
+.story-metadata hr {
+  width: 80% !important;
+}
+
+.story-metadata p {
+  font-size: 135%;
+  margin-left: 3%;
+}
+
+.story-metadata .valoration {
+  text-align: center;
+  font-size: 130%;
+  color: gray;
+  margin-left: 0px;
+}
+
+.story-metadata .valoration-star {
+  height: auto;
+  max-height: 24px;
+}
+
+.story-metadata .center .story {
+  margin-top: 0px;
+  margin-bottom: 1.2em;
+}
+
+/* Relativo a story-data */
+
+.story-data {
+  border: 1px solid #ccc;
+  background-color: white;
+}
+
+.story-data .title {
+  text-align: center;
+}
+
+.story-data .synopsis {
+  margin-left: 15px;
+
+}
+
+.story-data hr {
+  margin-top: 0px !important;
+  width: 40% !important;
+}
+
+.story-data .buttons {
+  text-align: center;
+  margin-top: 7%;
+  margin-bottom: 2%;
+}
+
+.story-data .btn-primary {
+  color: black;
+	background-color: #ff9000 !important;
+	border: 0 !important;
+	border-radius: 0 !important;
+  width: 25% !important;
+}
+
+.story-data .btn-primary:hover {
+  color: black;
+	background-color: #ef8000 !important;
+}
+
+.story-data .btn-default {
+  color: black;
+	background-color: #b3bcff !important;
+	border: 0 !important;
+	border-radius: 0 !important;
+  width: 25% !important;
+}
+
+.story-data .btn-default:hover {
+  color: black;
+	background-color: #a3acef !important;
+}
+
+p.btn-label {
+  font-size: 1.4em;
+  margin-bottom: 0.1em;
+}
+
+p.price {
+  margin-bottom: 0px;
+}
+
+p.price span {
+  font-weight: bold;
+}
+
+/* Comentarios */
+
+.story-comments {
+  border: 1px solid #ccc;
+  background-color: white;
+  margin-top: 30px;
+  padding: 0 15px 5px 15px;
+}
+
+/* Otras cosas */
+
+.story-search-params hr {
+  width: 60% !important;
+}
+
+
+/* Lector */
+
+.book-title{
+  margin-bottom: 30px;
+}
+
+.book-title h1, .book-title h3{
+  margin-top: 0;
+}
+
+a.book-option,
+a.book-option .glyphicon{
+  color: green !important;
+}
+
+a.book-back,
+a.book-back .glyphicon{
+  color: red !important;
+}
+
+.book .glyphicon{
+  font-size: 12px !important;
+}
+
+.page-left, .page-right{
+  border-top: solid 3px;
+  border-bottom: solid 3px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+}
+
+.page-right{
+  border-left: solid 2px;
+  border-right: solid 30px #808080;
+}
+
+.page-left{
+  border-left: solid 1px #808080;
+}
+
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}

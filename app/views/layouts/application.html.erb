@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tree Story</title>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-sanitize.js"></script>
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div class="header-content">
+
+    <%= render 'layouts/header' %>
+
+    <!-- Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12" id="bodyCol">
+          <%= yield %>
+          <br>
+          <% if flash.alert %>
+          <p class="alert-notice"><%= flash.alert %></p>
+          <% end %>
+          <% if flash.notice %>
+          <p class="alert-alert"><%= flash.notice %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+
+    <%= render 'layouts/footer' %>
+    
+  </div>
+
+</body>
+</html>

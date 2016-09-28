@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tree Story</title>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-sanitize.js"></script>
+
+  <%= csrf_meta_tags %>
+</head>
+
+<body id="welcome">
+
+<div class="container">
+  <div class="jumbotron jumbo-transparente col-md-6 col-md-offset-3 col-xs-12 row">
+    <div class="col-md-8 col-md-offset-2 col-xs-12">
+
+      <img class="logo center-block" src="/assets/logo definitivo.png">
+
+			<%= yield %>
+			
+    </div>
+  </div>  
+</div>
+
+</body>
+</html>

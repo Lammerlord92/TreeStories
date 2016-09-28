@@ -1,0 +1,155 @@
+/* index-categories */
+
+.index-categories {
+  margin-bottom: 30px;
+}
+
+.index-categories h3 {
+  margin-top: 0 !important;
+}
+
+.index-categories .btn-category-1 {
+  width: 100%;
+  background-color: #002400 !important;
+  border-color: #002400 !important;
+}
+
+.index-categories .btn-category-2 {
+  width: 100%;
+  background-color: #e8c469 !important;
+  border-color: #e8c469 !important;
+  color: black !important;
+}
+
+/* index-slider */
+
+.slick-content {
+  height: 450px;
+}
+
+.index-story-info {
+  margin-left: 17px;
+}
+
+.index-story-info .trendings {
+  margin-bottom: 20px;
+}
+
+.index-story-info .author {
+  font-size: 1.12em;
+  margin-bottom: 0 !important;
+  margin-right: 25px;
+}
+
+.index-story-info .category {
+  float: right;
+}
+
+.index-story-info .title {
+  margin-top: 0 !important;
+}
+
+.index-story-cover {
+  margin-right: 17px;
+  height: 450px;
+}
+
+.index-story-cover .title {
+  position: absolute;
+  bottom: 10%;
+  right: 0;
+  margin-right: 17px;
+  width: 50%;
+  height: 10%;
+  border: 1px solid lightgray;
+  border-right: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.index-story-cover .title h3 {
+  position: relative;
+  margin: 0 !important;
+  top: 20%; // ATENCIÓN: esta forma de centrar no es apropiada y depende del ancho del div padre
+  text-align: center;
+}
+
+.index-story-info .more-details {
+  font-weight: bold;
+  color: #b89439;
+  display: inline-block;
+}
+
+.absolute-center {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+
+/* index-new-stories */
+
+.index-new-stories {
+  margin-bottom: 3%;
+}
+
+.index-new-stories h3 {
+  margin-bottom: 3px;
+  margin-left: 10px;
+}
+
+.index-new-stories hr {
+  border-color: darkgray;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+img.category-image {
+  height: auto;
+  width: 100%;
+  max-height: 32px;
+  max-width: 32px;
+  margin-right: 5px;
+}
+
+/* index-writers */
+
+.index-writers .title {
+  margin-bottom: 20px;
+}
+
+.writer-name {
+  font-size: 1.2em;
+  margin-top: 5%;
+}
+
+.writer-buttom input {
+  width: 25%;
+  margin-top: 20px;
+}
+
+/* Las clases inferiores podrían estar sin usar */
+
+.trending-slot {
+  background-color: white;
+  border: 1px solid darkgray;
+  border-radius: 0px 0px 15px 15px;
+  margin-top: 10px;
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.trending-slot .story {
+  margin-top: 0;
+}
+
+.trending-slot p.category {
+  font-size: 150%;
+  text-align: center;
+  margin-top: 7px;
+  margin-bottom: 4px;
+}
