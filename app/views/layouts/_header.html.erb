@@ -9,7 +9,7 @@
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <% if user_signed_in? %>
-          <li><a href="/stories/example" data-no-turbolink="true" >Descubrir</a></li>
+          <li><%= link_to "Descubrir", "/stories/example", method: :get %></li>
           <li><a href="/stories">Historias</a></li>
           <li><a href="/categories">Géneros</a></li>
           <li><a href="/membership_cards/exchange">Suscripción premium</a></li>
