@@ -66,7 +66,8 @@ class User < ActiveRecord::Base
   after_create {
     p = Profile.create({
           user_id: self.id,
-          avatar: "http://manualdeamarresyhechizos.com/wp-content/uploads/2014/11/huevos_gallina-180x180.jpg",
+          #avatar: "http://manualdeamarresyhechizos.com/wp-content/uploads/2014/11/huevos_gallina-180x180.jpg",
+          avatar: "http://dergipark.gov.tr/assets/app/images/buddy_sample.png",
           profile_status: "PUBLIC",
           # Comentamos estas dos lineas porque no es buena practica
           # asignar una firma o una descripcion por defecto
