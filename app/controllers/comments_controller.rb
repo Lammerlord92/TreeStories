@@ -46,8 +46,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    if current_user.profile.id == @comment.profile_id 
-        or current_user.role_type == 'Administrator'
+    if current_user.profile.id == @comment.profile_id or current_user.role_type == 'Administrator'
       story = Story.find(@comment.story_id)
       @comment.destroy
       redirect_to story

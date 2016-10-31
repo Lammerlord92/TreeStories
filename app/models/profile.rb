@@ -2,7 +2,7 @@ class Profile < ActiveRecord::Base
   belongs_to :user
 # t  has_many :friendships, through: :user
   validates :profile_status, inclusion: {in: ["PUBLIC", "PRIVATE"]}
-  validates :avatar, :signature, :description, :name, :profile_status, presence: true, on: :update, unless: :skip_update_validation
+  validates :signature, :description, :name, :profile_status, presence: true, on: :update, unless: :skip_update_validation
   validates  :signature,                                       uniqueness: true, on: :update, unless: :skip_update_validation
 
   attr_accessor :skip_update_validation
