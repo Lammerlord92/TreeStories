@@ -9,14 +9,18 @@
       <p class="text-center"><%= comment.profile.user.name %></p>
       </a>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-8">
       <h4><%= comment.title %></h4>
       <p><%= comment.body %><p>
       <small><%= comment.date.strftime("%A, %dth %B %Y") %></small>
     </div>
-    <div class="col-md-1">
+    <div class="col-md-2 text-right">
       <% if current_user.profile == comment.profile %>
       <%= link_to "", edit_comment_path(comment, :id_story => id), class: "glyphicon glyphicon-pencil" %>
+      &nbsp;
+      <% end %>
+      <% if current_user.profile == comment.profile or current_user.role_type == 'Administrator' %>
+      <%= link_to "", comment, method: :delete, :id_story => id, class: "glyphicon glyphicon-remove" %>
       <% end %>
     </div>
   </div>

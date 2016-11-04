@@ -31,12 +31,27 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
-    @comment.date = Date.current
-    story = Story.find(@comment.story_id)
-    if @comment.update(comment_params)
+    if current_user.profile.id == @comment.profile_id
+      @comment.date = Date.current
+      story = Story.find(@comment.story_id)
+      if @comment.update(comment_params)
+        redirect_to story
+      else
+        render :edit
+      end
+    else
+      render 'errors/permission_denied'
+    end
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    if current_user.profile.id == @comment.profile_id or current_user.role_type == 'Administrator'
+      story = Story.find(@comment.story_id)
+      @comment.destroy
       redirect_to story
     else
-      render :edit
+      render 'errors/permission_denied'
     end
   end
 
