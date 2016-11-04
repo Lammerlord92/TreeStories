@@ -112,7 +112,7 @@ header .dropdown-menu{
   background-color: #002400 !important;
 }
 
-header .dropdown-menu a:hover, a:active{
+header .dropdown-menu a:hover, a:active, a:focus{
   color: #002400 !important;
 }
 
