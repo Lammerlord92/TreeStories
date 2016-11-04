@@ -21,7 +21,38 @@ class WelcomeController < ApplicationController
     end
 
     # Done. Se muestran los perfiles de los usuarios cuyos libros tienen más adquisiciones.
-    @writers = Profile.where(id: Addition.group(:story).order('count_id desc').count('id').keys[0..25].map(&:profile_id)).limit(6)
+    #@writers = Profile.where(id: Addition.group(:story).order('count_id desc').count('id').keys[0..25].map(&:profile_id)).limit(6)
+
+    # Done. Devolvemos los autores que han publicado las últimas historias
+    # 1. Creamos dos arrays vacíos para guardar los escritores que recorramos y que devolvamos
+    # 2. Ordenamos las historias por fecha de salida
+    # 3. Recorremos el array de historias (De 0-10, lo suyo es de 0-longitud)
+    # 4. Suponemos que el autor de la historia seleccionada no ha sido añadido aún
+    # 5. Recorremos el listado de autores añadidos y comprobamos si está apuntado
+    # 6. Si no estaba apuntado, y mientras no hayan 6 autores, lo apuntamos y lo devolvemos
+    #TODO Es necesario recorrer desde 0 hasta el tamaño de la lista de historias ordenadas
+    @writers = Array.new()
+    @addedWriters = Array.new()
+    @newest_stories=Story.order(release_date: :desc)
+    #newestStoriesSizeAux = @newest_stories
+    for i in 0..10
+    #for i in 0..newestStoriesSizeAux
+      isAdded = false
+      author = @newest_stories[i].creatorProfile
+      for i in 0..@addedWriters.size
+        if @addedWriters[i] == author.id
+          isAdded = true
+        end
+      end
+
+      if(isAdded==false)
+        if(@addedWriters.size<6)
+          @writers.push(author)
+          @addedWriters.push(author.id)
+        end
+      end
+
+    end
 
     render 'index'
   end
