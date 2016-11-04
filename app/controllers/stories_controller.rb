@@ -59,6 +59,12 @@ before_action :authenticate_user!, except: [:example ]
     @categories = Category.all
   end
 
+  def edit
+    begin
+      @story = set_story
+    end
+  end
+
   #POST /stories
   def create
     @story = Story.new(story_params)
@@ -119,4 +125,9 @@ before_action :authenticate_user!, except: [:example ]
       @stories = Story.all
     end
   end
+
+  def set_story
+    @story=Story.find(params[:id])
+  end
+
 end

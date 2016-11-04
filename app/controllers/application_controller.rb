@@ -48,7 +48,7 @@ class ApplicationController < ActionController::Base
   private
 
   def layout
-    if devise_controller? && action_name=='new'
+    if devise_controller? && (action_name=='new' or action_name=='create')
       return "devise"
     else
       return "application"

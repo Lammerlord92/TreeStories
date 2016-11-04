@@ -19,6 +19,13 @@
       <!-- TODO: Mejorar la forma en la que se muestra el idioma -->
       <p>Fecha de publicación: <%= story.release_date ? story.release_date.strftime('%d/%m/%Y') : 'Sin fecha' %></p>
       <% if current_user.present? %> <!-- Evitar "NilException" -->
+          <% if story.creatorProfile.id == current_user.profile.id %>
+              <div class="center" style="margin-bottom: 10px;">
+                <%= link_to "Editar información", edit_story_path(@story), class:"btn btn-default" %>
+              </div>
+          <% end %>
+      <% end %>
+      <% if current_user.present? %> <!-- Evitar "NilException" -->
         <% if story.creatorProfile.id == current_user.profile.id %>
           <div class="center" style="margin-bottom: 10px;">
             <%= button_to 'Ir al editor de historias', "/maker/#{story.id}",  class: 'btn btn-default', method: :get %>
