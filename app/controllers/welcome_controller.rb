@@ -16,8 +16,15 @@ class WelcomeController < ApplicationController
     # Done
     @newest_stories_by_category = Hash.new
     @categories.each do |category|
-      stories = category.stories.order(release_date: :desc).limit(3)
-      @newest_stories_by_category[category] = stories
+
+      # Categories without stories aren't showed at index
+      if category.stories.empty?
+        @categories.delete(category)
+      else
+        stories = category.stories.order(release_date: :desc).limit(3)
+        @newest_stories_by_category[category] = stories
+      end
+
     end
 
     # Done. Se muestran los perfiles de los usuarios cuyos libros tienen más adquisiciones.
