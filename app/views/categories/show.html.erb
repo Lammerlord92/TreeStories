@@ -10,6 +10,7 @@
       <div class="buttons text-center">
         <% if user_signed_in? and (current_user.role_type == 'Administrator') %>
         <%= link_to "Editar", edit_category_path(@category), class:"btn btn-default"  %>
+        <%= link_to "Eliminar", @category, method: :delete, class:"btn btn-default"  %>
         <% end %>
         <%= link_to "Atrás", categories_path, class:"btn btn-default"  %>
       </div>
