@@ -68,10 +68,16 @@ class ProfilesController < ApplicationController
     require 'fastimage'
     @profile = set_profile
     if is_current_profile? @profile # No permitas que un usuario edite un perfil que no es suyo
-      imagene = FastImage.size(set_profile.avatar)
-
-      if(imagene[0]!=imagene[1])
-        render 'errors/permission_denied'
+      image = FastImage.size(profile_params[:avatar])
+      vacio = profile_params[:avatar]
+      if vacio!='' && (image==nil || image[0]!=image[1])
+        if image==nil
+          flash.now.alert = 'El enlace no pertenece a una imagen válida'
+          render :edit
+        else
+          flash.now.alert = 'La imagen debe tener mismo ancho y alto'
+          render :edit
+        end
       else
         if @profile.update(profile_params)
           redirect_to @profile
@@ -79,7 +85,6 @@ class ProfilesController < ApplicationController
           render :edit
         end
       end
-
     else
       render 'errors/permission_denied'
     end
