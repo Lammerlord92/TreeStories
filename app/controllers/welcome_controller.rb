@@ -41,13 +41,13 @@ class WelcomeController < ApplicationController
     @writers = Array.new()
     @addedWriters = Array.new()
     @newest_stories=Story.order(release_date: :desc)
-    #newestStoriesSizeAux = @newest_stories
-    for i in 0..10
-    #for i in 0..newestStoriesSizeAux
+
+    @newest_stories.each do |story|
       isAdded = false
-      author = @newest_stories[i].creatorProfile
-      for i in 0..@addedWriters.size
-        if @addedWriters[i] == author.id
+      author = story.creatorProfile
+
+      @addedWriters.each do |authorID|
+        if authorID == author.id
           isAdded = true
         end
       end

@@ -1,3 +1,6 @@
+
+
+
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
   before_action :params_search, only: [:search]
@@ -62,12 +65,25 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    require 'fastimage'
     @profile = set_profile
     if is_current_profile? @profile # No permitas que un usuario edite un perfil que no es suyo
-      if @profile.update(profile_params)
-        redirect_to @profile
+      image = FastImage.size(profile_params[:avatar])
+      vacio = profile_params[:avatar]
+      if vacio!='' && (image==nil || image[0]!=image[1])
+        if image==nil
+          flash.now.alert = 'El enlace no pertenece a una imagen válida'
+          render :edit
+        else
+          flash.now.alert = 'La imagen debe tener mismo ancho y alto'
+          render :edit
+        end
       else
-        render :edit
+        if @profile.update(profile_params)
+          redirect_to @profile
+        else
+          render :edit
+        end
       end
     else
       render 'errors/permission_denied'
@@ -160,9 +176,6 @@ class ProfilesController < ApplicationController
     end
     #@profiles
     #render 'index'
-
-  end
-
 =end
   #FIXME - Nos estamos hackeando a nosotros mismos. Pasar a un usuario premium así bytheface? Sin restringir quien puede acceder a esta URL?
   #Además va a dar petidos pues el usuario premium ya tiene una fecha de expiración que es obligatoria. Si se quiere mantener este método
@@ -208,7 +221,7 @@ class ProfilesController < ApplicationController
     end
   end
 
-  # Devuelve true si el 'profile' dado es seguido por el usuario
+  # Devuelve true si el 'profile' dadohttp://www.ece.rice.edu/~wakin/images/lena512.bmp es seguido por el usuario
   def is_follow_this_profile?(profile)
     #   return current_user.profile.follows?(profile)
 
@@ -238,6 +251,22 @@ class ProfilesController < ApplicationController
       return false
     end
   end
+
+=begin
+
+
+  #Devuelve true si el ancho es igual al alto
+  def anchoIgualAlto(profile)
+    if current_user.present?
+      @current_profile = current_user.profile
+      return profile.id == @current_profile.id
+    else
+      return false
+    end
+  end
+
+=end
+
 =begin t
   # Devuelve true si el 'profile' dado es de un usuario amigo del usuario autentificado
   def is_friend_profile?(profile)
