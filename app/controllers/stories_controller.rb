@@ -87,10 +87,64 @@ before_action :authenticate_user!, except: [:example ]
     end
   end
 
-  def story_params
-    # Con frontpage -> params.require(:story).permit(:title,:description,:cover,:frontpage,:language,:price,:release_date,:published,:num_purchased)
-    params.require(:story).permit(:title,:description,:cover,:language,:price,:release_date,:published,:num_purchased)
+  def update
+    @story = set_story
+    @story.categories = params[:categories]
+    @categories = Category.all
+    #if is_current_profile? @profile # No permitas que un usuario edite un perfil que no es suyo
+
+    #puts(story_params)
+    @newCategories = params[:categories]
+    logger.debug "--------------- new categories #{@newCategories}"
+
+    if (!@newCategories.nil?)
+      @localCategories = Category.find(@newCategories)
+      logger.debug "---------------- localCategories #{@localCategories.to_ary}"
+    end
+
+    if @localCategories == nil
+      flash.now.alert = 'Es obligatorio añadir una categoría al menos'
+      render :edit
+      logger.debug "------------- ENTRA!!!"
+
+    else
+      @other = @story.categories.to_ary
+      logger.debug "------------- my categories #{@other}"
+      @story.categories.delete_all
+      logger.debug "------------- my categoriesVacía #{@other}"
+      @story.categories.push(@localCategories.to_ary)
+      logger.debug "------------- my categories #{@story.categories.to_ary}"
+      #@story.assign_attributes(:categories => @newCategories)
+      #@originalCaterogiesStory = @story.categories
+      #logger.debug "----------- my categories #{@originalCaterogiesStory}"
+
+      if @story.update(story_params_update)
+
+        #if @story.update_attributes(params[:category])
+        redirect_to @story
+      else
+        render :edit
+      end
+
+    end
+
+
+    #else
+     # render 'errors/permission_denied'
+    #end
   end
+
+  def story_params
+
+
+    # Con frontpage -> params.require(:story).permit(:title,:description,:cover,:frontpage,:language,:price,:release_date,:published,:num_purchased)
+    params.require(:story).permit(:title,:description,:cover,:frontpage,:language,:price,:release_date,:published,:num_purchased,:category_id)
+  end
+
+  def story_params_update
+    params.require(:story).permit(:title,:description,:cover,:frontpage,:language,:price,:release_date,:published,:num_purchased,:category_id)
+  end
+
 
   def search
     @categories = Category.all
