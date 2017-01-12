@@ -93,20 +93,56 @@ before_action :authenticate_user!, except: [:example ]
   end
 
   def search
+
     @categories = Category.all
+    @stories = Array.new()
 
     if params[:q]
-      @q = params[:q].downcase
+      @q = params[:q].downcase #Obtiene el texto de búsqueda
+      @selectedCategories = params[:checkboxform] #Obtiene las categorías seleccionadas
       query = 'lower(title) like :q OR lower(description) like :q OR lower(language) like :q and published = true'
+      #logger.debug "-------------------------------- q tiene el valor #{@q}"
+      #logger.debug "-------------------------------- selectedCategories tiene el valor #{@selectedCategories}"
+
+      @localCategories = Array.new()
+      if @selectedCategories == nil #Comprueba si nos llega el array de categorías vacío, en cuyo caso usaremos todas las categorías
+        @localCategories = Category.all
+      else #En caso contrario, buscamos las categorías seleccionadas
+        @localCategories = Category.find(@selectedCategories)
+      end
+
+      #Descomentar para comprobar el contenido de localCategories
+      #for aux in @localCategories
+        #logger.debug "------------------------------ localCategory #{aux.name}"
+      #end
+
       if @q
-        @stories = Story.where(query, {q: "%#{@q}%"})
-        if @stories.blank?
-          flash.now.alert = 'No se han encontrado resultados'
+        @localStories = Story.where(query,{q: "%#{@q}%"}) #Realizamos la query que busca por el título indicado
+        @firstStepStories = Array.new()
+        for aux in @localStories #Para cada historia de @localStories
+          #Descomentar para comprobar el título de cada hsitoria encontrada
+          #logger.debug"__________________________ localStory #{aux.title}"
+          @auxCategrs = aux.categories
+          for aux2 in @auxCategrs #De cada historia, recorremos sus categorías
+            #Descomentar para comprobar el listado de categorías la historia
+            #logger.debug"__________________________ localStoryGenre #{aux2.name}"
+            for aux3 in @localCategories #Ahora, comprobamos que comprenda las categorías que estamos buscando
+              #Descomentar para comprobar las categorías deseadas
+              #logger.debug"__________________________ estamos buscando con la categoría #{aux3.name}"
+              if aux2 == aux3 #Vamos comparando categorías propias y las deseadas
+                #Descomentat para comprobar si hay coincidencias
+                #logger.debug"__________________________ coincidencia #{aux2.name} - #{aux3.name}"
+                @firstStepStories.push(aux) #Vamos añadiendo las historias cada vez que coincidan
+              end
+            end
+          end
         end
-      else
-        @stories = Story.where(published: true)
+        @stories = @firstStepStories.uniq #Finalmente, devolvemos la lista, sin repetir elementos
       end
     end
+
+
+    #A partir de aquí, territorio Apache, desconocido... O.o
 
     if params[:category_id]
       category_id = params[:category_id].to_i
