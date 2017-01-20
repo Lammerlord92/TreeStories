@@ -197,3 +197,23 @@ a, a:hover, a:active, a:focus{
   color: black !important;
   text-decoration: none !important;
 }
+
+
+/* Páginas informativas */
+
+.jumbo-verde{
+  background-color: #002400 !important;
+  color: #efefef !important;
+}
+
+.jumbo-verde p{
+  font-size: 14px !important;
+}
+
+.jumbo-verde a{
+  color: #ECA701 !important;
+}
+
+.jumbo-verde a:hover, .jumbo-verde a:active, .jumbo-verde a:focus{
+  color: #FFC000 !important;
+}
