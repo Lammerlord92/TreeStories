@@ -92,10 +92,11 @@ Rails.application.routes.draw do
 
   #Profiles
 # t  get 'profiles/search', to: 'profiles#search'
+  get 'profiles/ban/:id', to: 'profiles#ban'
   get 'profiles/premium/:id', to: 'profiles#premium'
   get 'profiles/follow/:id', to: 'profiles#follow'
   get 'profiles/unfollow/:id', to: 'profiles#unfollow'
-  get 'profiles/ban/:id', to: 'profiles#ban'
+
   resources :profiles
 
   #Additions
