@@ -25,6 +25,8 @@ class MembershipCardsController < ApplicationController
 
   end
 
-
+  def list
+    @codes = MembershipCard.all
+  end
 
 end

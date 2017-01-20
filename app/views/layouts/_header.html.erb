@@ -33,6 +33,7 @@
               <% if current_user.role_type == 'Administrator' %>
               <li role="separator" class="divider"></li>
               <li><a href="/categories/new">Crear género</a></li>
+              <li><a href="/membership_cards/list">Listar códigos</a></li>
               <% end %>
               <li role="separator" class="divider"></li>
               <li><%= link_to "Cerrar sesión", destroy_user_session_path, :method => :delete %></li>
