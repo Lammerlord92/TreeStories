@@ -1,79 +1,52 @@
-<div class="row index-categories">
-  <div class="col-md-3">
-    <h3>Explora por géneros:</h3>
-  </div>
-  <div class="col-md-9">
-    <div class="row">
-      <% @categories.first(6).each_with_index do |category, i| %>
-        <div class="col-md-2">
-          <a href='/stories/search?category_id=<%= category.id %>'>
-            <% unless i.odd? %>
-              <button type="submit" class="btn btn-primary btn-category-1">
-                <%= category.name %>
-              </button>
-            <% else %>
-              <button type="submit" class="btn btn-primary btn-category-2">
-                <%= category.name %>
-              </button>
-            <% end %>
-          </a>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-<hr />
-
-<!-- TODO No funciona
-<%= render 'welcome/slider' %>
--->
-
-<div class="index-new-stories">
-  <div class="center title">
-    <h2><b>Novedades</b></h2>
-  </div>
-  <% @categories.each_slice(2) do |categories| %>
-    <div class="row">
-      <% categories.each do |category| %>
-        <div class="col-md-6">
-          <h3><a href="/categories/<%= category.id %>">
-            <img src="<%= category.icon %>" alt="<%= category.name %>" class="category-image" />
-            <%= category.name %>
-          </a></h3>
-          <hr/>
-          <div class="row">
-            <% @newest_stories_by_category[category].each do |story| %>
-              <div class="col-md-4">
-                <%= render 'stories/story_slot', story: story %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
+<div class="row">
+  <h2 class="text-center"><b>Explora por géneros</b></h2>
+  <br/>
+  <% @categories.first(6).each_with_index do |category, i| %>
+    <div class="col-md-2">
+      <a href="/stories/search?category_id=<%= category.id %>" class="btn btn-primary btn-block">
+        <%= category.name %>
+      </a>
     </div>
   <% end %>
 </div>
 
 <hr />
 
-<div class="index-writers">
-  <div class="center title">
-    <h2><b>Escritores</b></h2>
-  </div>
-  <div class="row">
-    <% @writers.each do |writer| %>
-      <div class="col-md-2">
-        <a href="/profiles/<%= writer.id %>">
-          <%= image_tag writer.avatar, class: "img-circle img-responsive" %>
-          <div class="center">
-            <p class="writer-name" ><%= writer.name %></p>
-          </div>
-        </a>
+<div class="row">
+  <h2 class="text-center"><b>Novedades</b></h2>
+  <% @categories.each_slice(2) do |categories| %>
+    <% categories.each do |category| %>
+      <div class="col-md-6 category-block">
+        <h3 class="category-header"><a href="/categories/<%= category.id %>">
+          <img src="<%= category.icon %>" alt="<%= category.name %>" />
+          <span><%= category.name %></span>
+        </a></h3>
+        <hr/>
+        <div class="row">
+          <% @newest_stories_by_category[category].each do |story| %>
+            <div class="col-md-4">
+              <%= render 'stories/story_slot', story: story %>
+            </div>
+          <% end %>
+        </div>
       </div>
     <% end %>
-  </div>
-  <div class="center writer-buttom">
-    <%= button_to 'Ver todos los escritores', '/profiles', class: 'btn btn-default', method: :get %>
-  </div>
+  <% end %>
+</div>
+
+<hr />
+
+<div class="row">
+  <h2 class="text-center"><b>Escritores</b></h2>
+  <% @writers.first(6).each do |writer| %>
+    <div class="col-md-2">
+      <a href="/profiles/<%= writer.id %>">
+        <%= image_tag writer.avatar, class: "img-circle img-responsive writer-avatar" %>
+        <p class="text-center"><b><%= writer.name %></b></p>
+      </a>
+    </div>
+  <% end %>
+</div>
+<div class="text-center writer-button">
+  <%= button_to 'Ver todos los escritores', '/profiles', class: 'btn btn-primary', method: :get %>
 </div>
