@@ -14,13 +14,21 @@
 	font-size: 14px;
 }
 
-#jm a, #jm a:hover{
+#jm a{
 	color: #ECA701 !important;
+}
+
+#jm a:hover, #jm a:active, #jm a:focus{
+  color: #FFC000 !important;
 }
 
 #bt{
   background-color: #ECA701 !important;
   color: #002400 !important;
+}
+
+#bt:hover, #bt:active, #bt:focus{
+  background-color: #FFC000 !important;
 }
 
 #tit{
