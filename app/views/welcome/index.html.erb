@@ -3,7 +3,7 @@
   <br/>
   <% @categories.first(6).each_with_index do |category, i| %>
     <div class="col-md-2">
-      <a href="/stories/search?category_id=<%= category.id %>" class="btn btn-primary btn-block">
+      <a href="/stories/search?category_id=<%= category.id %>" class="btn btn-main btn-block">
         <%= category.name %>
       </a>
     </div>
@@ -48,5 +48,5 @@
   <% end %>
 </div>
 <div class="text-center writer-button">
-  <%= button_to 'Ver todos los escritores', '/profiles', class: 'btn btn-primary', method: :get %>
+  <%= button_to 'Ver todos los escritores', '/profiles', class: 'btn btn-main', method: :get %>
 </div>
