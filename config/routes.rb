@@ -167,18 +167,18 @@ Rails.application.routes.draw do
   #     resources :products
 
   # Paypal payments
-  #
-  resources :payments, only: [:show, :destroy] do
-    collection do
-      get :success
-      get :cancel
-      post :notify
-    end
-  end
-  get 'payment/create/:id', to: 'payments#create_story_payment'
-  get 'payment/donate', to: 'payments#donation_form'
-  post 'payment/donate', to: 'payments#create_donation_payment'
-  get 'payment/be_premium', to: 'payments#create_mc_payment'
+  # No se usa
+  # resources :payments, only: [:show, :destroy] do
+  #   collection do
+  #     get :success
+  #     get :cancel
+  #     post :notify
+  #   end
+  # end
+  # get 'payment/create/:id', to: 'payments#create_story_payment'
+  # get 'payment/donate', to: 'payments#donation_form'
+  # post 'payment/donate', to: 'payments#create_donation_payment'
+  # get 'payment/be_premium', to: 'payments#create_mc_payment'
 
 
 
