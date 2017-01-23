@@ -3,7 +3,8 @@
 
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
-  before_action :after_sign_in_path_for!
+  # TODO da error:
+  # before_action :after_sign_in_path_for!
   before_action :params_search, only: [:search]
 
   #GET /profiles
