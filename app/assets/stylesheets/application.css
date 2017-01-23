@@ -151,6 +151,7 @@ header .dropdown-menu{
 footer{
   width: 100%;
   background-color: #002400 !important;
+  margin-top: 35px;
 }
 
 footer a, footer a:hover, footer a:active, footer a:focus{
