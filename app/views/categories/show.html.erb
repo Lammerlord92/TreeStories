@@ -22,7 +22,7 @@
       <hr/>
       <div class="row">
         <% @category.stories.each do |story| %>
-        <div class="col-md-3 cat-story-slot">
+        <div class="col-md-3">
           <%= render 'stories/story_slot', story: story %>
         </div>
         <% end %>

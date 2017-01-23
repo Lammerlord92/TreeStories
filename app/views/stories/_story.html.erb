@@ -1,15 +1,15 @@
 <div class="row">
   <div class="col-md-4">
-    <div class="story-metadata">
-      <div class="center">
+    <div class="story-block story-metadata">
+      <div class="text-center">
         <div class="story">
           <!-- TODO: Hacer que la imagen se posicione igual que como en las imágenes del diseñador -->
           <%= render 'stories/story_cover', story: story %>
         </div>
       </div>
-      <h2><%= story.creatorProfile.name %></h2>
+      <h3 class="text-center"><a href="/profiles/<%= story.creatorProfile.id %>"><%= story.creatorProfile.name %></a></h3>
       <hr/>
-      <p>Géneros:</p>
+      <p><b>Géneros:</b></p>
       <!-- Solución prvisional -->
       <% story.categories.each do |category| %>
       <p>&#9679; <%= category.name %></p>
@@ -17,48 +17,43 @@
       <!-- No se muestra en esta versión -->
       <!--<p>Idioma: <%= story.language %></p>-->
       <!-- TODO: Mejorar la forma en la que se muestra el idioma -->
-      <p>Fecha de publicación: <%= story.release_date ? story.release_date.strftime('%d/%m/%Y') : 'Sin fecha' %></p>
-      <% if current_user.present? %> <!-- Evitar "NilException" -->
-          <% if story.creatorProfile.id == current_user.profile.id %>
-              <div class="center" style="margin-bottom: 10px;">
-                <%= link_to "Editar información", edit_story_path(@story), class:"btn btn-default" %>
-              </div>
-          <% end %>
-      <% end %>
+      <p><b>Fecha de publicación:</b> <%= story.release_date ? story.release_date.strftime('%d/%m/%Y') : 'Sin fecha' %></p>
       <% if current_user.present? %> <!-- Evitar "NilException" -->
         <% if story.creatorProfile.id == current_user.profile.id %>
-          <div class="center" style="margin-bottom: 10px;">
-            <%= button_to 'Ir al editor de historias', "/maker/#{story.id}",  class: 'btn btn-default', method: :get %>
+          <hr/>
+          <div class="text-center" style="margin-bottom: 10px;">
+            <%= link_to "Editar información", edit_story_path(@story), class:"btn btn-main" %>
+          </div>
+          <div class="text-center" style="margin-bottom: 10px;">
+            <%= button_to 'Ir al editor de historias', "/maker/#{story.id}",  class: 'btn btn-main', method: :get %>
           </div>
         <% end %>
       <% end %>
     </div>
   </div>
   <div class="col-md-8">
-    <div class="story-data">
-      <h2 class="title"><%= story.title %></h2>
+    <div class="story-block story-data">
+      <h2 class="text-center"><%= story.title %></h2>
       <hr/>
-      <div class="synopsis">
-        <h4><strong>Resumen</strong></h4>
-        <p><%= story.description %></p>
-      </div>
-      <div class="buttons">
+      <h4><strong>Resumen</strong></h4>
+      <p><%= story.description %></p>
+      <div class="text-center">
         <% unless current_user.nil? %>
           <% unless story.has_been_acquired_by_user?(current_user) or
               story.creatorProfile.id == current_user.profile.id %>
             <form action='/additions/create/<%=story.id%>' method="get">
             <!-- No hay pagos en esta versión -->
             <!--<form action='/payment/create/<%=story.id%>' method="get">-->
-              <button type="submit" class="btn btn-primary">
+              <button type="submit" class="btn btn-adquirir">
                 <p class="btn-label">Adquirir historia</p>
                 <!-- No se muestra en esta versión -->
-                <!--<p class="price">Precio: <span><%= story.price %> €</span></p>-->
+                <!--<p><b>Precio:</b><span> <%= story.price %> €</span></p>-->
               </button>
             </form>
           <% else %>
             <% if story.chapters.any? %>
               <form action="/stories/read/<%= story.id %>" method="get">
-                <button type="submit" class="btn btn-default">
+                <button type="submit" class="btn btn-leer">
                   <p class="btn-label">Leer</p>
                 </button>
               </form>
@@ -69,7 +64,7 @@
     </div>
 
     <!-- Comentarios -->
-    <div class="story-comments">
+    <div class="story-block story-comments">
       <h3>Comentarios</h3>
       <%= render 'comments/list', id: @story.id %>
     </div>
