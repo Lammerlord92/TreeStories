@@ -4,27 +4,20 @@
   </div>
   <div class="col-md-3">
     <div class="story-search-params">
-
       <form action="/stories/search" method="get" role="form">
         <div class="form-group has-feedback">
-          <label class="control-label">Buscar</label>
           <input class="form-control" type="text" name="q" placeholder="Buscar..." value="<%= @q %>" />
           <i class="glyphicon glyphicon-search form-control-feedback"></i>
         </div>
-
-
-        <div class="text-center">
-          <h3>GÉNEROS</h3>
-          <hr/>
-          <% @categories.each do |category| %>
-              <!-- Con esto, se crea un array llamado checkboxform al que iremos añadiendo cada categoría -->
-              <%=check_box_tag "checkboxform[]",category.id%><%=category.name%>
-          <% end %>
-        </div>
+        <h3 class="text-center">Géneros</h3>
+        <hr/>
+        <% @categories.each do |category| %>
+          <!-- Con esto, se crea un array llamado checkboxform al que iremos añadiendo cada categoría -->
+          <div class="category-params">
+            <%=check_box_tag "checkboxform[]",category.id%>&nbsp;<%=category.name%><br/>
+          </div>
+        <% end %>
       </form>
-      <div class="text-center">
-        <h3>-</h3>
-      </div>
     </div>
   </div>
 </div>
