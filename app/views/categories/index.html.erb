@@ -1,23 +1,23 @@
 <div class="row">
 
-  <div class="jumbotron jumboCat col-md-10 col-md-offset-1 text-center">
+  <div class="jumbotron jumbo-cat col-md-10 col-md-offset-1 text-center">
     
-    <h2>Géneros</h2>
+    <h2><b>Géneros</b></h2>
     
     <div class="row">
       <% @categories.each do |category|%>
-      <div class="col-md-4 categories">
+      <div class="col-md-4 category">
         <a href="/categories/<%=category.id%>">
           <img src="<%=category.icon %>" height="50" />
-          <span class="cat-name">&nbsp;<%=category.name%></span>
+          <span>&nbsp;<%=category.name%></span>
         </a>
       </div>
       <% end %>
     </div>
 
     <% if user_signed_in? and (current_user.role_type == 'Administrator') %>
-    <div class="buttons text-center button-new-cat">
-      <%= link_to 'Nuevo género', new_category_path, class: 'btn btn-default' %>
+    <div class="text-center button-new-cat">
+      <%= link_to 'Nuevo género', new_category_path, class: 'btn btn-main' %>
     </div>
     <% end %>
 

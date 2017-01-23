@@ -5,24 +5,24 @@
     <div class="col-md-3 text-center">
       <h1><%= @category.name  %></h1>
       <% cat = I18n.transliterate(@category.name).downcase %>
-      <img class="cover" src="/assets/categories_covers/<%= cat %>.jpg">
+      <img class="img-responsive" src="/assets/categories_covers/<%= cat %>.jpg">
       <h4><%= @category.description %></h4>
-      <div class="buttons text-center">
+      <hr/>
+      <div class="text-center">
         <% if user_signed_in? and (current_user.role_type == 'Administrator') %>
-        <%= link_to "Editar", edit_category_path(@category), class:"btn btn-default"  %>
-        <%= link_to "Eliminar", @category, method: :delete, class:"btn btn-default"  %>
+        <%= link_to "Editar", edit_category_path(@category), class:"btn btn-main"  %>
+        <%= link_to "Eliminar", @category, method: :delete, class:"btn btn-main"  %>
         <% end %>
-        <%= link_to "Atrás", categories_path, class:"btn btn-default"  %>
+        <%= link_to "Atrás", categories_path, class:"btn btn-main"  %>
       </div>
     </div>
 
     <div class="col-md-9 text-center">
-      <div class="subtitle">
-        <h3>Historias</h3>
-      </div>
+      <h3>Historias</h3>
+      <hr/>
       <div class="row">
         <% @category.stories.each do |story| %>
-        <div class="col-md-3">
+        <div class="col-md-3 cat-story-slot">
           <%= render 'stories/story_slot', story: story %>
         </div>
         <% end %>
