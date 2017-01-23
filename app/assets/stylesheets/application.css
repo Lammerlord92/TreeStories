@@ -62,7 +62,7 @@ body{
 
 .header-content{
   min-height:100%;
-  padding-bottom: 50px;
+  padding-bottom: 85px;
 }
 
 .footer{
@@ -151,7 +151,6 @@ header .dropdown-menu{
 footer{
   width: 100%;
   background-color: #002400 !important;
-  margin-top: 35px;
 }
 
 footer a, footer a:hover, footer a:active, footer a:focus{
