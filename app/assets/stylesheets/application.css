@@ -62,7 +62,7 @@ body{
 
 .header-content{
   min-height:100%;
-  padding-bottom: 85px;
+  padding-bottom: 50px;
 }
 
 .footer{
@@ -79,26 +79,17 @@ header nav{
   margin-bottom: 0 !important;
 }
 
-header a{
-  color: #efefef !important;
+header a, header a:hover{
+  color: #FFFFFF !important;
 }
 
-header a:hover, header a:active, header a:focus{
-  color: #002400 !important;
-  background-color: #efefef !important;
-}
-
-.newstory{
+.newstory, .newstory:hover{
   color: #002400 !important;
   background-color: #ECA701 !important;
   border-radius: 0 !important;
   border: 0 !important;
   padding: 5px !important;
   margin: 10px;
-}
-
-.newstory:hover, .newstory:active, .newstory:focus{
-  background-color: #FFC000 !important;
 }
 
 header img{
@@ -115,11 +106,14 @@ header img{
 
 header .open .dropdown-toggle{
   background-color: #002400 !important;
-  color: #efefef !important;
 }
 
 header .dropdown-menu{
   background-color: #002400 !important;
+}
+
+header .dropdown-menu a:hover, a:active, a:focus{
+  color: #002400 !important;
 }
 
 
@@ -153,9 +147,9 @@ footer{
   background-color: #002400 !important;
 }
 
-footer a, footer a:hover, footer a:active, footer a:focus{
+footer a, footer a:hover{
   background-color: #002400 !important;
-  color: #efefef !important;
+  color: #FFFFFF !important;
 }
 
 .navbar-footer {
@@ -163,13 +157,9 @@ footer a, footer a:hover, footer a:active, footer a:focus{
   border: 0 !important;
 }
 
-.copyright, .donate{
+.copyright{
   padding-top: 15px;
-  color: #efefef;
-}
-
-.donate{
-  margin-right: 20px;
+  color: white;
 }
 
 
@@ -179,41 +169,4 @@ footer a, footer a:hover, footer a:active, footer a:focus{
   que se aprecie con el nuevo fondo */
 hr{
   border-color: darkgray !important;
-}
-
-.btn-main{
-  color: white !important;
-  background-color: #113e05 !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-}
-
-.btn-main:hover, .btn-main:active, .btn-main:focus{
-  color: white !important;
-  background-color: darkgreen !important;
-}
-
-a, a:hover, a:active, a:focus{
-  color: black !important;
-  text-decoration: none !important;
-}
-
-
-/* Páginas informativas */
-
-.jumbo-verde{
-  background-color: #002400 !important;
-  color: #efefef !important;
-}
-
-.jumbo-verde p{
-  font-size: 14px !important;
-}
-
-.jumbo-verde a{
-  color: #ECA701 !important;
-}
-
-.jumbo-verde a:hover, .jumbo-verde a:active, .jumbo-verde a:focus{
-  color: #FFC000 !important;
 }

@@ -3,15 +3,12 @@
 
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
-  # TODO da error:
-  # before_action :after_sign_in_path_for!
   before_action :params_search, only: [:search]
 
   #GET /profiles
   def index
     @profiles = Profile.all
   end
-
 
   #GET /profiles/:id
   def show
@@ -234,7 +231,16 @@ class ProfilesController < ApplicationController
 
   end
 
+  #GET /profiles/ban/:id
+  def ban
+    date = params[:date]
+    profile = Profile.find(params[:id])
+    user = profile.user
 
+    user.update_attribute(:banned_until, date)
+
+    redirect_to profile
+  end
 
   # Devuelve true si el 'profile' dado pertenece al usuario autentificado
   def is_current_profile?(profile)
@@ -246,16 +252,6 @@ class ProfilesController < ApplicationController
     end
   end
 
-  #GET /profiles/ban/:id
-  def ban
-    date = params[:date]
-    profile = Profile.find(params[:id])
-    user = profile.user
-
-    user.update_attribute(:banned_until, date)
-
-    redirect_to profile
-  end
 =begin
 
 

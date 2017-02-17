@@ -3,9 +3,8 @@ Rails.application.routes.draw do
   get 'connections/search'
 
   get 'membership_cards/exchange'
-  get 'membership_cards/list'
   get 'membership_cards/why'
-
+  get 'membership_cards/generate'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -93,11 +92,10 @@ Rails.application.routes.draw do
 
   #Profiles
 # t  get 'profiles/search', to: 'profiles#search'
-  get 'profiles/ban/:id', to: 'profiles#ban'
   get 'profiles/premium/:id', to: 'profiles#premium'
   get 'profiles/follow/:id', to: 'profiles#follow'
   get 'profiles/unfollow/:id', to: 'profiles#unfollow'
-
+  get 'profiles/ban/:id', to: 'profiles#ban'
   resources :profiles
 
   #Additions
@@ -167,18 +165,18 @@ Rails.application.routes.draw do
   #     resources :products
 
   # Paypal payments
-  # No se usa
-  # resources :payments, only: [:show, :destroy] do
-  #   collection do
-  #     get :success
-  #     get :cancel
-  #     post :notify
-  #   end
-  # end
-  # get 'payment/create/:id', to: 'payments#create_story_payment'
-  # get 'payment/donate', to: 'payments#donation_form'
-  # post 'payment/donate', to: 'payments#create_donation_payment'
-  # get 'payment/be_premium', to: 'payments#create_mc_payment'
+  #
+  resources :payments, only: [:show, :destroy] do
+    collection do
+      get :success
+      get :cancel
+      post :notify
+    end
+  end
+  get 'payment/create/:id', to: 'payments#create_story_payment'
+  get 'payment/donate', to: 'payments#donation_form'
+  post 'payment/donate', to: 'payments#create_donation_payment'
+  get 'payment/be_premium', to: 'payments#create_mc_payment'
 
 
 

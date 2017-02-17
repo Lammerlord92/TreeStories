@@ -21,14 +21,14 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12" id="bodyCol">
+          <%= yield %>
+          <br>
           <% if flash.alert %>
           <p class="alert-alert"><%= flash.alert %></p>
           <% end %>
           <% if flash.notice %>
           <p class="alert-notice"><%= flash.notice %></p>
           <% end %>
-          <br>
-          <%= yield %>
         </div>
       </div>
     </div>
