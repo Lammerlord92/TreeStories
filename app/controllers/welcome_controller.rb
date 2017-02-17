@@ -18,9 +18,7 @@ class WelcomeController < ApplicationController
     @categories.each do |category|
 
       # Categories without stories aren't showed at index
-      if category.stories.empty?
-        @categories.delete(category)
-      else
+      if not category.stories.empty?
         stories = category.stories.order(release_date: :desc).limit(3)
         @newest_stories_by_category[category] = stories
       end

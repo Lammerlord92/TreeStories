@@ -3,7 +3,7 @@
   <br/>
   <% @categories.first(6).each_with_index do |category, i| %>
     <div class="col-md-2">
-      <a href="/stories/search?category_id=<%= category.id %>" class="btn btn-main btn-block">
+      <a href="/categories/<%= category.id %>" class="btn btn-main btn-block">
         <%= category.name %>
       </a>
     </div>
@@ -16,6 +16,7 @@
   <h2 class="text-center"><b>Novedades</b></h2>
   <% @categories.each_slice(2) do |categories| %>
     <% categories.each do |category| %>
+      <% if @newest_stories_by_category[category] != nil %>
       <div class="col-md-6 category-block">
         <h3 class="category-header"><a href="/categories/<%= category.id %>">
           <img src="<%= category.icon %>" alt="<%= category.name %>" />
@@ -30,6 +31,7 @@
           <% end %>
         </div>
       </div>
+      <% end %>
     <% end %>
   <% end %>
 </div>
