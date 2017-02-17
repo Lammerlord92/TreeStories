@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'membership_cards/exchange'
   get 'membership_cards/why'
-
+  get 'membership_cards/generate'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

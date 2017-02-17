@@ -25,6 +25,13 @@ class MembershipCardsController < ApplicationController
 
   end
 
+  def generate
+    @genCode = SecureRandom.urlsafe_base64(n= 16, false)
+    until(MembershipCard.find_by_code(@genCode).eql?(nil))
+      @genCode = SecureRandom.urlsafe_base64(n= 16, false)
+    end
+  end
+
 
 
 end
