@@ -1,0 +1,19 @@
+<table style="width:100%">
+  <tr>
+    <th>Código</th>
+    <th>Meses premium</th>
+    <th>Usado</th>
+  </tr>
+  <% @codes.each do |membership_card| %>
+  <tr>
+    <td><%= membership_card.code %></td>
+    <td><%= membership_card.premiumMonths %></td>
+    <%@usage = membership_card.usage
+      if (@usage.nil?)
+        @usage = "No usado"
+      end
+    %>
+    <td><%= @usage %></td>
+  </tr>
+  <% end %>
+</table>
