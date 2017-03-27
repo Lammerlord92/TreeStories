@@ -3,9 +3,8 @@ Rails.application.routes.draw do
   get 'connections/search'
 
   get 'membership_cards/exchange'
-  get 'membership_cards/list'
   get 'membership_cards/why'
-
+  get 'membership_cards/generate'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -30,21 +29,21 @@ Rails.application.routes.draw do
   devise_for :user
   ##########################################################################
   ###Rutas añadidas por devise####
-  #new_user_session_path	        GET	/users/sign_in(.:format)	      devise/sessions#new
-  #user_session_path	            POST	/users/sign_in(.:format)  	  devise/sessions#create
-  #destroy_user_session_path      DELETE	/users/sign_out(.:format)	  devise/sessions#destroy
-  #user_password_path	            POST	/users/password(.:format)	    devise/passwords#create
-  #new_user_password_path	        GET	/users/password/new(.:format)	  devise/passwords#new
-  #edit_user_password_path	      GET	/users/password/edit(.:format)	devise/passwords#edit
-  #                               PATCH	/users/password(.:format)   	devise/passwords#update
-  #                               PUT	/users/password(.:format)	      devise/passwords#update
-  #cancel_user_registration_path	GET	/users/cancel(.:format)	        devise/registrations#cancel
-  #user_registration_path	        POST	/users(.:format)	            devise/registrations#create
-  #new_user_registration_path    	GET	/users/sign_up(.:format)	      devise/registrations#new
-  #edit_user_registration_path   	GET	/users/edit(.:format)	          devise/registrations#edit
-  #                               PATCH	/users(.:format)	            devise/registrations#update
-  #                               PUT	/users(.:format)	              devise/registrations#update
-  #                               DELETE	/users(.:format)          	devise/registrations#destroy
+  #new_user_session_path          GET /users/sign_in(.:format)        devise/sessions#new
+  #user_session_path              POST  /users/sign_in(.:format)      devise/sessions#create
+  #destroy_user_session_path      DELETE  /users/sign_out(.:format)   devise/sessions#destroy
+  #user_password_path             POST  /users/password(.:format)     devise/passwords#create
+  #new_user_password_path         GET /users/password/new(.:format)   devise/passwords#new
+  #edit_user_password_path        GET /users/password/edit(.:format)  devise/passwords#edit
+  #                               PATCH /users/password(.:format)     devise/passwords#update
+  #                               PUT /users/password(.:format)       devise/passwords#update
+  #cancel_user_registration_path  GET /users/cancel(.:format)         devise/registrations#cancel
+  #user_registration_path         POST  /users(.:format)              devise/registrations#create
+  #new_user_registration_path     GET /users/sign_up(.:format)        devise/registrations#new
+  #edit_user_registration_path    GET /users/edit(.:format)           devise/registrations#edit
+  #                               PATCH /users(.:format)              devise/registrations#update
+  #                               PUT /users(.:format)                devise/registrations#update
+  #                               DELETE  /users(.:format)            devise/registrations#destroy
   #########################################################################
 
   get 'welcome/index'
@@ -66,7 +65,6 @@ Rails.application.routes.draw do
   get 'request_friendships/deciding_request/:rf/:choice', to: 'request_friendships#deciding_request'
   get 'request_friendships/show_pending', to: 'request_friendships#show_pending'
   get 'request_friendships/cancel_friendship', to: 'request_friendships#cancel_friendship'
-
 =end
 
   #Stories
@@ -93,11 +91,10 @@ Rails.application.routes.draw do
 
   #Profiles
 # t  get 'profiles/search', to: 'profiles#search'
-  get 'profiles/ban/:id', to: 'profiles#ban'
   get 'profiles/premium/:id', to: 'profiles#premium'
   get 'profiles/follow/:id', to: 'profiles#follow'
   get 'profiles/unfollow/:id', to: 'profiles#unfollow'
-
+  get 'profiles/ban/:id', to: 'profiles#ban'
   resources :profiles
 
   #Additions
@@ -167,18 +164,18 @@ Rails.application.routes.draw do
   #     resources :products
 
   # Paypal payments
-  # No se usa
-  # resources :payments, only: [:show, :destroy] do
-  #   collection do
-  #     get :success
-  #     get :cancel
-  #     post :notify
-  #   end
-  # end
-  # get 'payment/create/:id', to: 'payments#create_story_payment'
-  # get 'payment/donate', to: 'payments#donation_form'
-  # post 'payment/donate', to: 'payments#create_donation_payment'
-  # get 'payment/be_premium', to: 'payments#create_mc_payment'
+  #
+  resources :payments, only: [:show, :destroy] do
+    collection do
+      get :success
+      get :cancel
+      post :notify
+    end
+  end
+  get 'payment/create/:id', to: 'payments#create_story_payment'
+  get 'payment/donate', to: 'payments#donation_form'
+  post 'payment/donate', to: 'payments#create_donation_payment'
+  get 'payment/be_premium', to: 'payments#create_mc_payment'
 
 
 
