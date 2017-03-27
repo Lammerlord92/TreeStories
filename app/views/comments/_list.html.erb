@@ -27,8 +27,6 @@
   <hr/>
 <% end %>
 
-<div class="boton">
-  <% if current_user.present? %>
-    <%= link_to "Nuevo comentario", new_comment_path(:id_story => id), class: "btn btn-primary", :method => :get %>
-  <% end %>
-</div>
+<% if current_user.present? %>
+  <%= link_to "Nuevo comentario", new_comment_path(:id_story => id), class: "btn btn-main", :method => :get %>
+<% end %>

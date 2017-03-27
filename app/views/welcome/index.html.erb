@@ -1,38 +1,19 @@
-<div class="row index-categories">
-  <div class="col-md-3">
-    <h3>Explora por géneros:</h3>
-  </div>
-  <div class="col-md-9">
-    <div class="row">
-      <% @categories.first(6).each_with_index do |category, i| %>
-        <div class="col-md-2">
-          <a href='/stories/search?category_id=<%= category.id %>'>
-            <% unless i.odd? %>
-              <button type="submit" class="btn btn-primary btn-category-1">
-                <%= category.name %>
-              </button>
-            <% else %>
-              <button type="submit" class="btn btn-primary btn-category-2">
-                <%= category.name %>
-              </button>
-            <% end %>
-          </a>
-        </div>
-      <% end %>
+<div class="row">
+  <h2 class="text-center"><b>Explora por géneros</b></h2>
+  <br/>
+  <% @categories.first(6).each_with_index do |category, i| %>
+    <div class="col-md-2">
+      <a href="/categories/<%= category.id %>" class="btn btn-main btn-block">
+        <%= category.name %>
+      </a>
     </div>
-  </div>
+  <% end %>
 </div>
 
 <hr />
 
-<!-- TODO No funciona
-<%= render 'welcome/slider' %>
--->
-
-<div class="index-new-stories">
-  <div class="center title">
-    <h2><b>Novedades</b></h2>
-  </div>
+<div class="row">
+  <h2 class="text-center"><b>Novedades</b></h2>
   <% @categories.each_slice(2) do |categories| %>
     <% categories.each do |category| %>
       <% if @newest_stories_by_category[category] != nil %>
@@ -57,23 +38,17 @@
 
 <hr />
 
-<div class="index-writers">
-  <div class="center title">
-    <h2><b>Escritores</b></h2>
-  </div>
-  <div class="row">
-    <% @writers.each do |writer| %>
-      <div class="col-md-2">
-        <a href="/profiles/<%= writer.id %>">
-          <%= image_tag writer.avatar, class: "img-circle img-responsive" %>
-          <div class="center">
-            <p class="writer-name" ><%= writer.name %></p>
-          </div>
-        </a>
-      </div>
-    <% end %>
-  </div>
-  <div class="center writer-buttom">
-    <%= button_to 'Ver todos los escritores', '/profiles', class: 'btn btn-default', method: :get %>
-  </div>
+<div class="row">
+  <h2 class="text-center"><b>Escritores</b></h2>
+  <% @writers.first(6).each do |writer| %>
+    <div class="col-md-2">
+      <a href="/profiles/<%= writer.id %>">
+        <%= image_tag writer.avatar, class: "img-circle img-responsive writer-avatar" %>
+        <p class="text-center"><b><%= writer.name %></b></p>
+      </a>
+    </div>
+  <% end %>
+</div>
+<div class="text-center writer-button">
+  <%= button_to 'Ver todos los escritores', '/profiles', class: 'btn btn-main', method: :get %>
 </div>

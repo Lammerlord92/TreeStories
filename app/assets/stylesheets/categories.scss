@@ -2,28 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.jumboCat{
+/* Categories list */
+
+.jumbo-cat{
   background: rgba(255, 255, 255, 0.75) !important;
   padding-top: 20px !important;
-  margin-top: 30px !important;
 }
 
-.categories{
-  margin-bottom: 20px;
-  margin-top: 20px;
+.category{
+  margin: 20px 0 20px 0;
+  font-size: 20px;
 }
 
 .button-new-cat{
   margin-top: 20px;
-}
-
-img.cover{
-  width: 100%;
-  height: auto;
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-
-.subtitle h3{
-  margin-top: 33px;
 }

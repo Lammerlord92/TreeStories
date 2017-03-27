@@ -1,11 +1,16 @@
-<h1>Historias</h1>
-
-<!-- Cuadro de búsqueda de historias -->
-<form action="/stories/search" method="get">
-  <input type="text" name="q" placeholder="Buscar historias">
-  <button type="submit">Buscar</button>
-</form>
-<br>
+<div class="row">
+  <div class="col-md-9">
+    <h1>Historias</h1>
+  </div>
+  <div class="col-md-3">
+    <form action="/stories/search" method="get" role="form">
+      <div class="form-group has-feedback index-searchbox">
+        <input class="form-control" type="text" name="q" placeholder="Buscar..." value="<%= @q %>" />
+        <i class="glyphicon glyphicon-search form-control-feedback"></i>
+      </div>
+    </form>
+  </div>
+</div>
 
 <!-- Tabs para cada listado -->
 <ul class="nav nav-tabs nav-justified">
@@ -34,3 +39,4 @@
   <% end %>
 
 </ul>
+<br/>
